@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+
+  <div id="app"></div>
+
+  <template id="my-app">
+    <button @click="changeFullName">修改fullName</button>
+
+    <h2>{{fullName}}</h2>
+  </template>
+
+  <script src="../js/vue.js"></script>
+
+  <script>
+    const App = {
+      template: '#my-app',
+      data() {
+        return {
+          firstName: 'zhang',
+          lastName: 'san',
+        }
+      },
+
+      computed: {
+        // 计算属性的值是不能直接更改的，通过更改监听的值去间接更改
+        fullName: {
+          get() {
+            console.log('computed fullname');
+            return this.firstName + ' ' + this.lastName;
+          },
+
+          set(newVal, oldVal) {
+            console.log(newVal, oldVal);
+            console.log(this.fullName);
+          }
+        }
+      },
+
+      methods: {
+        changeFullName() {
+          this.fullName = 'lissiu';
+        }
+      }
+    }
+
+    Vue.createApp(App).mount('#app');
+  </script>
+</body>
+
+</html>

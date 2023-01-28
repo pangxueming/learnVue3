@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    // 1.对象的引用赋值
+    // 对象是引用类型， 赋值方式
+    // const info = {
+    //   name: 'zhangsan',
+    //   age: 24
+    // }
+    // const obj = info;
+    // info.name = 'lisi';
+    // console.log(obj.name);
+
+    // 2.对象的浅拷贝
+    //  const info = {
+    //     name: 'zhangsan',
+    //     age: 24
+    //   }
+
+    //   const obj = Object.assign({}, info); // 或const obj = {...info};
+
+    //   info.name = 'lisi';
+
+    //   console.log(info.name);
+    //   console.log(obj.name);
+
+    // 3.对象的深拷贝
+    const info = {
+      name: 'zhangsan',
+      age: 24,
+      friend: {
+        name: 'wangwu',
+        age: 22,
+        height: 1.889
+      }
+    }
+
+    const obj = JSON.parse(JSON.stringify(info));
+    info.friend.name = 'zhaoliu';
+    console.log(obj.friend.name);
+  </script>
+</body>
+
+</html>

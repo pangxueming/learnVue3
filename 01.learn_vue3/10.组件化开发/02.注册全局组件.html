@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+
+  <div id="app"></div>
+
+  <template id="my-app">
+    <h2>{{message}}</h2>
+    <h2>准备开始组件化开发</h2>
+
+    <!-- 在原生中不能使用单标签组件，会造成下面的组件不能正常显示 -->
+    <component-a></component-a>
+    <component-b></component-b>
+  </template>
+
+  <template id="component-b">
+    <h3>component2</h3>
+
+    <h3>{{title}}</h3>
+  </template>
+
+  <script src="../js/vue.js"></script>
+
+  <script>
+    const App = {
+      template: '#my-app',
+      data() {
+        return {
+          message: '你好啊'
+        }
+      }
+    }
+
+  const app = Vue.createApp(App);
+
+  app.component('component-a', {
+    template: `<h2>我是组件a</h2>
+               <h3>当前计数：{{counter}}</h3>
+               <button @click="increment">+1</button>
+              `,
+    data() {
+      return {
+        counter: 0
+      }
+    },
+
+    methods: {
+      increment() {
+        this.counter++;
+      }
+    }
+  })
+
+  app.component('component-b', {
+    template: '#component-b',
+    data() {
+      return {
+        title: 'component-b的标题'
+      }
+    }
+  })
+
+  app.mount('#app');
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+
+  <div id="app"></div>
+
+  <template id="my-app">
+    <h2>{{message}}</h2>
+    <!-- 
+      Vue将被侦听的数组的变更方法进行了包裹，所以将它们也将会触发视图更新，这些被包裹过的方法包括：
+        push
+        pop
+        shift
+        unshift
+        splice
+        sort
+        reverse
+     -->
+
+    <ul>
+      <li v-for="(movie, index) of movies">{{index + 1}}.{{ movie }}</li>
+    </ul>
+
+    <input type="text" v-model="newMovie">
+    <button @click="addNewMovie">添加新电影</button>
+  </template>
+
+  <script src="../js/vue.js"></script>
+
+  <script>
+    const App = {
+      template: '#my-app',
+      data() {
+        return {
+          message: '你好啊',
+          movies: ["星际穿越", "大话西游", "月光宝盒1", "人世间"],
+          newMovie: ''
+        }
+      },
+
+      methods: {
+        addNewMovie() {
+          if(!this.newMovie) {
+            alert('请输入电影名');
+            return;
+          }
+          this.movies.push(this.newMovie);
+          this.newMovie = '';
+
+         const movies = this.movies.filter(item => item.length >= 5);
+
+         console.log(movies);
+
+         this.movies = movies;
+         console.log(this.movies);
+        }
+      }
+    }
+
+    Vue.createApp(App).mount('#app');
+  </script>
+</body>
+
+</html>

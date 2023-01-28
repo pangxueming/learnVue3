@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+
+  <style>
+    .red {
+      color: red;
+    }
+
+    .fontSize {
+      font-size: 16px;
+    }
+  </style>
+</head>
+
+<body>
+
+  <div id="app"></div>
+
+  <template id="my-app">
+    <!-- 用对象来绑定class属性时，是通过判断变量的真假来决定是否显示对应的类名，比如 { class1: true }, 则显示class1这个类，否则不显示 -->
+    <h2 v-bind:class="{color: color, fontSize: fontSize, title, xxx}">{{message}}</h2>
+
+    <!-- 用数组来绑定class属性时，如果color属性存在，则显示color属性对象的变量，否则不显示-->
+    <h3 v-bind:class="[color, fontSize]"></h3>
+  </template>
+
+  <script src="../js/vue.js"></script>
+
+  <script>
+    const App = {
+      template: '#my-app',
+      data() {
+        return {
+          message: '你好啊',
+          color: 'red',
+          fontSize: 'fontSize',
+          title: 'title1',
+          xxx: 'xxx1'
+        }
+      }
+    }
+
+    Vue.createApp(App).mount('#app');
+  </script>
+</body>
+
+</html>

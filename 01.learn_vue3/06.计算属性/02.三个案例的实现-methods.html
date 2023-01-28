@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+
+  <div id="app"></div>
+
+  <template id="my-app">
+    <h2>{{getReverseMessage()}}</h2>
+    <h2>{{getFullName()}}</h2>
+    <h2>{{getResult()}}</h2>
+  </template>
+
+  <script src="../js/vue.js"></script>
+
+  <script>
+    const App = {
+      template: '#my-app',
+      data() {
+        return {
+          message: '你好啊',
+          firstName: 'zhang',
+          lastName: 'san',
+          source: 80
+        }
+      },
+
+      methods: {
+        getReverseMessage() {
+          return this.message.split(' ').reverse().join(' ');
+        },
+
+        getFullName() {
+          return firstName + ' ' + lastName;
+        },
+
+        getResult() {
+          return source >= 60 ? '及格' : '不及格';
+        }
+      }
+    }
+
+    Vue.createApp(App).mount('#app');
+  </script>
+</body>
+
+</html>

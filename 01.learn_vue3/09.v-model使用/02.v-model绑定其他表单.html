@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+
+  <div id="app"></div>
+
+  <template id="my-app">
+    <!-- 1.textarea -->
+    <label for="intro">
+      <textarea id="intro" cols="30" rows="10" type="text" v-model="info"></textarea>
+    </label>
+    <h2>{{info}}</h2>
+
+
+    <!-- 2.checkbox -->
+    <!-- 2.1 单选框 -->
+    <label for="agree">
+      <input type="checkbox" name="agree" id="agree"  v-model="isAgree" /> 同意协议
+    </label>
+    <h2>isAgree: {{isAgree}}</h2>
+
+    <!-- 2.2 多选框 -->
+    <span>你的爱好</span>
+    <label for="basketball">
+      <input type="checkbox" name="basketball" id="basketball" value="basketball" v-model="hobbies" /> 篮球
+    </label> 
+    <label for="football">
+      <input type="checkbox" name="football" id="football" value="football" v-model="hobbies" /> 足球
+    </label> 
+    <label for="tennis">
+      <input type="checkbox" name="tennis" id="tennis" value="tennis" v-model="hobbies" /> 网球
+    </label>
+
+    <h2>hobbies: {{hobbies}}</h2>
+
+    <!-- 3.radio -->
+    <label for="male">
+      <input type="radio" name="male" id="male" value="male" v-model="sex"> 男
+    </label>
+    <label for="female">
+      <input type="radio" name="female" id="female" value="female" v-model="sex"> 女
+    </label>
+
+    <h2>sex: {{sex}}</h2>
+
+    <!-- 4.select -->
+    <span>喜欢的水果</span>
+    <select multiple v-model="fruit" size="3">
+      <option value="apple">苹果</option>
+      <option value="banana">香蕉</option>
+      <option value="orange">橙子</option>
+      <option value="lichi">荔枝</option>
+    </select>
+
+    <h2>fruit: {{fruit}}</h2>
+  </template>
+
+  <script src="../js/vue.js"></script>
+
+  <script>
+    const App = {
+      template: '#my-app',
+      data() {
+        return {
+          info: '你好啊',
+          isAgree: false,
+          hobbies: [],
+          sex: '',
+          fruit: ['lichi']
+        }
+      },
+    }
+
+    Vue.createApp(App).mount('#app');
+  </script>
+</body>
+
+</html>

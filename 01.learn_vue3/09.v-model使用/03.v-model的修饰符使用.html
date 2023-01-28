@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+
+  <div id="app"></div>
+
+  <template id="my-app">
+    <input type="text" v-model.number="number" />
+    <button @click="checkNumberType">查看输入框1类型</button>
+    <br />
+    <input type="text" v-model="message" />
+    <button @click="checkMessageType">查看输入框2类型</button>
+  </template>
+
+  <script src="../js/vue.js"></script>
+
+  <script>
+    const App = {
+      template: '#my-app',
+      data() {
+        return {
+          number: 222,
+          message: 222
+        }
+      },
+
+      methods: {
+        checkNumberType() {
+          console.log(this.number, typeof this.number);
+        },
+
+        checkMessageType() {
+          console.log(this.message, typeof this.message);
+        }
+      }
+    }
+
+    Vue.createApp(App).mount('#app');
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+
+  <style>
+    .red {
+      background-color: red;
+    }
+  </style>
+</head>
+
+<body>
+
+  <div id="app"></div>
+
+  <template id="my-app">
+    <h2 v-on:click="handleClick">{{message}}</h2>
+
+    <div class="red" v-on:mouseover="mouseEvent">red</div>
+
+    <!-- 绑定一个对象 -->
+    <div v-on="{ click: btnClick, mousemove: mouseEvent }">btn</div>
+    <div @="{ click: btnClick, mousemove: mouseEvent }">btn</div>
+  </template>
+
+  <script src="../js/vue.js"></script>
+
+  <script>
+    const App = {
+      template: '#my-app',
+      data() {
+        return {
+          message: '你好啊'
+        }
+      },
+
+      methods: {
+        handleClick() {
+          console.log('click');
+        },
+
+        btnClick() {
+          console.log('btnClick');
+        },
+
+        mouseEvent() {
+          console.log('over');
+        }
+      }
+    }
+
+    Vue.createApp(App).mount('#app');
+  </script>
+</body>
+
+</html>
