@@ -1,4 +1,5 @@
 import { createApp } from 'vue'
-import App from './03.父组件传递子组件/App.vue'
+import './style/index.css'
+import App from './05.商品页面切换/App.vue'
 
 createApp(App).mount('#app')
