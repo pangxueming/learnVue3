@@ -3,6 +3,7 @@ import HelloWorld from './components/HelloWorld.vue'
 </script>
 
 <template>
+  <h1>红色h1标签</h1>
   <div>
     <a href="https://vitejs.dev" target="_blank">
       <img src="/vite.svg" class="logo" alt="Vite logo" />
@@ -25,5 +26,9 @@ import HelloWorld from './components/HelloWorld.vue'
 }
 .logo.vue:hover {
   filter: drop-shadow(0 0 2em #42b883aa);
+}
+
+h1 {
+  color: red;
 }
 </style>
