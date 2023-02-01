@@ -1,5 +1,7 @@
 import { createApp } from 'vue'
 import './style/index.css'
-import App from './05.商品页面切换/App.vue'
+import App from './10.作用域插槽/App.vue'
 
-createApp(App).mount('#app')
+const app = createApp(App)
+app.config.unwrapInjectedRef = true
+app.mount('#app')
