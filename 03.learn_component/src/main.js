@@ -1,6 +1,6 @@
 import { createApp } from 'vue'
 import './style/index.css'
-import App from './12.异步组件的使用/App.vue'
+import App from './13.引入元素和组件/App.vue'
 // import { sum } from './12.异步组件的使用/utils/match'
 
 const app = createApp(App)
