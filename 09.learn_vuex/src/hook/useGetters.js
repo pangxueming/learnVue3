@@ -1,6 +1,11 @@
-import { mapGetters } from 'vuex';
+import { mapGetters, createNamespacedHelpers } from 'vuex';
 import { useComputedMapper } from './useComputedMapper';
 
-export function useGetters(mapper) {
-  return useComputedMapper(mapper, mapGetters);
+export function useGetters(moduleName, mapper) {
+  let mapperFn = mapGetters;
+  if (typeof moduleName === 'string' && moduleName) {
+    mapperFn = createNamespacedHelpers(moduleName).mapGetters;
+  }
+  
+  return useComputedMapper(mapper, mapperFn);
 }

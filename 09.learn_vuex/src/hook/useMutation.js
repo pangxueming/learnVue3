@@ -1,6 +1,11 @@
-import { mapMutations } from 'vuex';
+import { mapMutations, createNamespacedHelpers } from 'vuex';
 import { useMethodsMapper } from './useMethodsMapper';
 
-export function useMutation(mapper) {
-  return useMethodsMapper(mapper, mapMutations);
+export function useMutation(moduleName, mapper) {
+  let mapperFn = mapMutations;
+  if (typeof moduleName === 'string' && moduleName) {
+    mapperFn = createNamespacedHelpers(moduleName).mapMutations;
+  }
+
+  return useMethodsMapper(mapper, mapperFn);
 }
