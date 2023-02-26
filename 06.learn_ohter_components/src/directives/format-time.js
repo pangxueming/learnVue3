@@ -1,11 +1,11 @@
 import dayjs from "dayjs";
 
 export default function registerFormatTime(app) {
-  let formatStrValue = 'YYYY-MM-DD HH:mm:ss';
   app.directive('format-time', {
     created: (el, bindings) => {
+      bindings.formatStrValue = 'YYYY-MM-DD HH:mm:ss';
       const { value } = bindings;
-      if (value) formatStrValue = value;
+      if (value) bindings.formatStrValue = value;
     },
     mounted: (el, bindings) => {
       const { textContent } = el;
@@ -15,7 +15,7 @@ export default function registerFormatTime(app) {
         timestamp = timestamp * 1000;
       }
 
-      el.textContent = dayjs(timestamp).format(formatStrValue);
+      el.textContent = dayjs(timestamp).format(bindings.formatStrValue);
     }
   })
 }

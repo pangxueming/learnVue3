@@ -1,6 +1,7 @@
 <template>
   <div>
     <h2 v-format-time="'YYYY-MM-DD'">{{ timeStamp }}</h2>
+    <h2 v-format-time>{{ timeStamp }}</h2>
   </div>
 </template>
 
