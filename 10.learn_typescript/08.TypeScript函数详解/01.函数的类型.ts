@@ -17,3 +17,5 @@ const add: AddFuncType = (num1: number, num2: number) => {
 }
 
 add(10, 20);
+
+export { };
